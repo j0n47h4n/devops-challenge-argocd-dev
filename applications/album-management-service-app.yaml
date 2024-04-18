@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: album-management-service-helm
+  namespace: argocd
+spec:
+  project: devops-challenge-project
+  source:
+    repoURL: "git@github.com:j0n47h4n/album-management-service-helm.git"
+    targetRevision: HEAD
+    path: environments/development
+  destination:
+    server: "https://4faf57a7-3a71-4ead-b29b-2f42eaf0fcf9.k8s.ondigitalocean.com"
+    namespace: default
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: devops-challenge-project
+  namespace: argocd
+spec:
+  description: "Project for managing the DevOps challenge apps"
+  sourceRepos:
+    - "git@github.com:j0n47h4n/album-management-service-helm.git"
+  destinations:
+    - namespace: default
+      server: "https://4faf57a7-3a71-4ead-b29b-2f42eaf0fcf9.k8s.ondigitalocean.com"
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
